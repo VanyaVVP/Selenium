@@ -17,9 +17,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class Base_Of_Test {
 	public static final String MTS_PAGE = "https://www.mts.by";
 	public static final By DOM2 = By.cssSelector("iframe.bepaid-iframe");
-	public static final By BLOCK_TITLE = By.xpath("//h2[normalize-space()='Онлайн пополнение без комиссии']");
+	public static final By BLOCK_TITLE = By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/h2");
 	public static final By PARTNERS_ELEMENT = By.cssSelector(".pay__partners");
-	public static final By PAYMENT_LOGOS = By.tagName("img");
+	public static final By PAYMENT_LOGOS = By.xpath("//img[contains(@src, '" + "/local/templates/new_design/assets/html/images/pages/index/pay" + "')]");
 	public static final By COOKIE_BUTTON = By.id("cookie-agree");
 	public static final By MORE_DETAILS_LINK = By.linkText("Подробнее о сервисе");
 	public static final By NEXT_BUTTON = By.xpath("//*[text() = 'Продолжить']");

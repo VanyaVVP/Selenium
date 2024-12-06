@@ -18,9 +18,8 @@ class Main_Page_MTS extends Base_Of_Test {
 	@Test
 	public void testBlockTitle() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // ожидание 10 секунд
-		String expectedTitle = "Онлайн пополнение без комиссии";
 		WebElement blockTitle = wait.until(ExpectedConditions.presenceOfElementLocated(BLOCK_TITLE));
-		assertEquals(expectedTitle, blockTitle.getText().trim().replaceAll("\\s+", " "));
+		assertEquals("Онлайн пополнение без комиссии", blockTitle.getText().trim().replaceAll("\\s+", " "));
 	}
 
 	@DisplayName("Тестирование логотипа платёжных систем") // нахождение 5 img платёжных систем
