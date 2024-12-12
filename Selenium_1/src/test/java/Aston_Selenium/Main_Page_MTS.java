@@ -12,9 +12,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Description;
+
+
+
 class Main_Page_MTS extends Base_Of_Test {
 
 	@DisplayName("Тестирование заголовка") // Нахождение заголовка
+	@Severity(value = SeverityLevel.MINOR)
+	@Description("Тестируется заголовок: Онлайн пополнение без комиссии, в блоке услуг")
 	@Test
 	public void testBlockTitle() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // ожидание 10 секунд
@@ -23,6 +31,8 @@ class Main_Page_MTS extends Base_Of_Test {
 	}
 
 	@DisplayName("Тестирование логотипа платёжных систем") // нахождение 5 img платёжных систем
+	@Severity(value = SeverityLevel.MINOR)
+	@Description("Тестируются логотипы(5 img) банков, в блоке услуг ")
 	@Test
 	public void testPaymentLogos() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -32,6 +42,8 @@ class Main_Page_MTS extends Base_Of_Test {
 	}
 
 	@DisplayName("Проверка ссылки") // проверка перехода по ссылке
+	@Severity(value = SeverityLevel.BLOCKER)
+	@Description("Производится клик по ссылке, проверяется изменение url ")
 	@Test
 	public void testLink() {
 		cookie_agree();
@@ -42,6 +54,9 @@ class Main_Page_MTS extends Base_Of_Test {
 	}
 
 	@DisplayName("Тестирование вкладки оплаты") // заполнение полей + проверка нового окна
+	@Severity(value = SeverityLevel.CRITICAL)
+	@Description("Тест frame внутри сайта для услуги связи.\n 1. Сначала идёт заполнение полей.\n 2. Клик - продолжить.\n3. "
+			+ "Проверка данных:\n - указание цены(сверху и на button)\n-номера телефона\n-номера карты\n-наличия картинок банков\nвсех плейсхолдеров ")
 	@ParameterizedTest
 	@CsvSource({ "297777777,56,Ivan02@mail.ru, Номер карты, Срок действия, CVC, Имя держателя (как на карте)" })
 	public void testFields(String phoneNumber, String sum, String email, String NumberOfCard, String TimeOutOfCard,
@@ -78,6 +93,7 @@ class Main_Page_MTS extends Base_Of_Test {
 	}
 
 	@DisplayName("Тестирование placeholder'ов всех услуг") // Проверка плейсхолдеров
+	@Severity(value = SeverityLevel.MINOR)
 	@ParameterizedTest
 	@CsvSource({
 			"Номер телефона, Сумма, E-mail для отправки чека, Номер абонента,Номер счета на 44, Номер счета на 2073" })

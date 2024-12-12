@@ -1,48 +1,111 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>Aston_TestNG</groupId>
-  <artifactId>Selenium</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <groupId>Aston_TestNG</groupId>
+    <artifactId>Selenium</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-  <name>Selenium</name>
-  <url>http://maven.apache.org</url>
+    <name>Selenium</name>
+    <url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <allure.version>2.20.1</allure.version>  <!-- Рассмотрите обновление до последней стабильной версии -->
+        <aspectj.version>1.9.19</aspectj.version> <!-- Рассмотрите обновление до последней стабильной версии -->
+    </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    
-    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
-<dependency>
-    <groupId>org.seleniumhq.selenium</groupId>
-    <artifactId>selenium-chrome-driver</artifactId>
-    <version>4.27.0</version>
-</dependency>
+    <dependencies>
+        <!-- JUnit Jupiter (JUnit 5) -->
+        <dependency>
+       <groupId>org.junit.jupiter</groupId>
+       <artifactId>junit-jupiter-api</artifactId>
+       <version>5.11.0</version>  
+       <scope>test</scope>
+   </dependency>
+   <dependency>
+       <groupId>org.junit.jupiter</groupId>
+       <artifactId>junit-jupiter-engine</artifactId>
+       <version>5.11.0</version>  
+       <scope>test</scope>
+   </dependency>
 
-<dependency>
-    <groupId>io.github.bonigarcia</groupId>
-    <artifactId>webdrivermanager</artifactId>
-    <version>5.9.2</version>
-    <scope>test</scope>
-</dependency>
+        <!-- Allure для JUnit 5 -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>2.20.1</version>
+            <scope>test</scope>
+        </dependency>
 
-<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-<dependency>
-    <groupId>org.seleniumhq.selenium</groupId>
-    <artifactId>selenium-java</artifactId>
-    <version>4.27.0</version>
-</dependency>
+        <!-- Selenium зависимости -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.27.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>4.27.0</version>
+        </dependency>
+        
+        
+        <dependency>
+		            <groupId>ru.yandex.qatools.allure</groupId>
+		            <artifactId>allure-java-annotations</artifactId>
+		            <version>1.5.4</version>
+        		</dependency>
+        
+        <dependency>
+                    <groupId>org.testng</groupId>
+                    <artifactId>testng</artifactId>
+                    <version>6.9.10</version>
+                    <scope>test</scope>
+         </dependency>
+                
+                
+                <dependency>
+                        <groupId>com.google.code.gson</groupId>
+                        <artifactId>gson</artifactId>
+                        <version>2.8.0</version>
+                </dependency>   
+                
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.9.2</version>
+            <scope>test</scope>
+        </dependency>
+         <!-- AspectJ (для weaving) -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+    </dependencies>
 
-    
-  </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version> 
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>  
+                <configuration>
+                    <suiteXmlFiles>
+                       <suiteXmlFile>testing.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build> 
 </project>
